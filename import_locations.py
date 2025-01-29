@@ -76,18 +76,18 @@ class Team:
 position_names = ["zu Hause", "Vorspeise", "Hauptspeise", "Nachspeise", "After Party"]
 
 teams = list()
-teams.append(Team("LuzieLuanaFranzi", "Am Schlagbaum 25", 1))
-teams.append(Team("JanChristina", "Großer Bruch 20", 1))
-teams.append(Team("MoritzAlex", "Burgstätter Straße 7", 1))
-teams.append(Team("AnnikaChristian", "Rollstraße 5", 1))
-teams.append(Team("SouzHenry", "Rollstraße 2", 2))
-teams.append(Team("LenaXX", "Schulstraße 18a", 2))
-teams.append(Team("MarcScarlett", "Adolph-Roemer-Straße 7", 2))
-# teams.append(Team("AstridTheresa", "Gerhard-Rauschenbach-Straße 4", 3))
-teams.append(Team("AstridTheresa", "Schulstraße 18a", 3))
-# teams.append(Team("HannesLara", "Rollstraße 2", 3))
-teams.append(Team("LauraChris", "Schulstraße 21", 3))
-teams.append(Team("GretaTill", "Burgstätter Straße 5", 3))
+teams.append(Team("Team 1", "Am Schlagbaum 25", 1))
+teams.append(Team("Team 2", "Großer Bruch 20", 1))
+teams.append(Team("Team 3", "Burgstätter Straße 7", 1))
+teams.append(Team("Team 4", "Rollstraße 5", 1))
+teams.append(Team("Team 5", "Rollstraße 2", 2))
+teams.append(Team("Team 6", "Schulstraße 18a", 2))
+teams.append(Team("Team 7", "Adolph-Roemer-Straße 7", 2))
+# teams.append(Team("Team 8", "Gerhard-Rauschenbach-Straße 4", 3))
+teams.append(Team("Team 8", "Schulstraße 18a", 3))
+teams.append(Team("Team 9", "Schulstraße 21", 3))
+teams.append(Team("Team 10", "Burgstätter Straße 5", 3))
+# teams.append(Team("Team 11", "Rollstraße 2", 3))
 
 after_party = "Erzstraße 45"
 
@@ -176,12 +176,12 @@ for team in teams:
         prob += v[team, from_location, 3] + v[team, after_party, 4] <= 1 + e[team, from_location, after_party, 3]
 
 # if a team travels between two locations, the team needs to visit them accordingly
-for team in teams:
+'''for team in teams:
     for from_location in teams:
         for to_location in teams:
             for from_position in [0, 1, 2, 3]:
                 prob += 2 * e[team, from_location, to_location, from_position] <= v[team, from_location, from_position] + v[team, to_location, from_position+1]
-        prob += 2 * e[team, from_location, after_party, 3] <= v[team, from_location, 3] + v[team, after_party, 4]
+        prob += 2 * e[team, from_location, after_party, 3] <= v[team, from_location, 3] + v[team, after_party, 4]'''
 
 # measure the maximum time from one position to the next
 for team in teams:
@@ -234,7 +234,7 @@ for team1 in teams:
         if team1 != team2:
             prob += v[team1, team2, team2.position] + v[team2, team1, team1.position] + lpSum(n[team1, team2, team_location, position] for team_location in teams if team_location not in [team1, team2] for position in [1, 2, 3]) <= 1 + p_too_often[team1, team2]
 
-# every team can only visit each team once
+# every team can only visit each team location once
 for team in teams:
     for team_location in teams:
         prob += lpSum(v[team, team_location, position] for position in [1, 2, 3]) <= 1
