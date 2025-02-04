@@ -5,7 +5,7 @@ from folium.plugins import TagFilterButton
 from model.Group import Group
 from model.Location import Location
 from model.TravelTimes import TravelTimes
-from pulp import LpVariable, LpBinary, LpContinuous, LpProblem, LpMinimize, LpStatus, lpSum, listSolvers, getSolver, PULP_CBC_CMD
+from pulp import LpVariable, LpBinary, LpInteger, LpContinuous, LpProblem, LpMinimize, LpStatus, lpSum, listSolvers, getSolver, PULP_CBC_CMD
 
 class DinnerInstance:
 
@@ -120,7 +120,7 @@ class DinnerInstance:
             z[2, host] = LpVariable("z[2,{0}]".format(host.name), cat=LpBinary)
         for g1 in range(len(self.groups)-1):
             for g2 in range(g1+1, len(self.groups)):
-                z[3, self.groups[g1], self.groups[g2]] = LpVariable("z[3,{0},{1}]".format(self.groups[g1].name, self.groups[g2].name), cat=LpBinary)
+                z[3, self.groups[g1], self.groups[g2]] = LpVariable("z[3,{0},{1}]".format(self.groups[g1].name, self.groups[g2].name), cat=LpInteger)
 
         # initialize problem
         start_perf_counter = perf_counter()
