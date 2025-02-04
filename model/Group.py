@@ -5,17 +5,17 @@ from model.Location import Location
 
 class Group:
     """
-    Represents a group with a name, location, and ...
+    Represents a group with a name, location, and an event ID indicating which event the group hosts.
     """
     
     def __init__(self, name: str, location: Location, host_event_id: int):
         """
-        Initializes the Group with a name, location, and size.
+        Initializes the Group with a name, location, and host event ID.
 
         Args:
             name (str): The name of the group.
             location (Location): The location of the group.
-            host_event_id (int):
+            host_event_id (int): The ID of the event that this group is hosting.
         """
         self.name = name
         self.location = location
@@ -31,7 +31,7 @@ class Group:
             auth_key (str): The authentication key for the geocoding service.
             country_code (str): The country code.
             address (str): The address to geocode.
-            host_event_id (int): 
+            host_event_id (int): The ID of the event that this group is hosting.
 
         Returns:
             Group: The created Group instance.

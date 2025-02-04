@@ -17,25 +17,26 @@ class DinnerInstance:
                  addresses: List[Tuple[str, str, int]],
                  party_address: Optional[str] = None) -> None:
         """
-        Initializes the DinnerInstance with the provided configuration.
+        Sets up a DinnerInstance by geocoding the main city address and optional
+        party address, validating the event list, and creating group objects from
+        the given addresses. Each address tuple consists of the group’s name,
+        the local address, and the event ID that group wants to host.
 
-        This includes geocoding the city and optional party address,
-        validating the list of events, creating Group instances from the
-        given addresses (where the last element of each address tuple
-        indicates the event ID the group wants to host), and setting up
-        travel times between all relevant locations.
+        At least three events are required (e.g., a start event, at least one
+        main event, and a final event), and each event must have at least one
+        hosting group. If a party address is provided, it is also geocoded
+        and included for subsequent calculations.
 
         Args:
-            ors_auth_key (str): Authentication key for the OpenRouteService API.
-            country_code (str): Country code (alpha-2 or alpha-3) for geocoding.
-            city_address (str): Address of the city where the dinner event is hosted.
-            events (List[str]): Ordered list of event names (must have at least three).
-            addresses (List[Tuple[str, str, int]]): A list of tuples (group name, local address, event ID).
-                The event ID indicates which event the group wants to host.
-            party_address (Optional[str]): Address for the after-party, if any. Default is None.
+            ors_auth_key (str): The authentication key for the OpenRouteService API.
+            country_code (str): The country code (alpha-2 or alpha-3) for geocoding.
+            city_address (str): The primary city address where the dinner event is centered.
+            events (List[str]): Ordered list of event names, with at least three entries.
+            addresses (List[Tuple[str, str, int]]): A list of (group name, address, event ID).
+            party_address (Optional[str]): Optional address for an after-party. Defaults to None.
 
         Raises:
-            ValueError: If fewer than three events are provided or if any event has no hosts.
+            ValueError: If fewer than three events are given or if any event has no groups hosting it.
         """
         self.country_code = country_code
         self.city_address = city_address
