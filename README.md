@@ -43,7 +43,7 @@ $t_e \in \mathbb{R}_{\ge 0}$ | maximum travel time from event $e \in \lbrace 0, 
 $y_{g, g', h} \in \lbrace 0, 1\rbrace$ | Do groups $g$ and $g'$ meet at location $v_h$ for event $e_h$ of host $h \in G$?
 $z^{1}_{h} \in \lbrace 0, 1\rbrace$ | Are there $k-1$ groups at location $v_h$ for event $e_h$ of host $h \in G$?
 $z^{2}_{h} \in \lbrace 0, 1\rbrace$ | Are there $k+1$ groups at location $v_h$ for event $e_h$ of host $h \in G$?
-$z^{3}_{g, g'} \in \mathbb{Z}_{\ge 0}$ | How many times more than once do the groups $g$ and $g'$ meet?
+$z^{3}_{g, g'} \in \mathbb{Z}\_{\ge 0}$ | How many times more than once do the groups $g$ and $g'$ meet?
 
 </div>
 
@@ -169,6 +169,7 @@ The solution is stored in a [csv file](example-solution.csv) which can be seen i
 | Group 9 | Group 3   | Group 5          | Group 9    |
 | Group 10| Group 4   | Group 7          | Group 10   |
 </div>
+
 A visualization of the solution is stored in an [html file](example-map.html) and can be seen in the following image.
 <div align="center">
 
