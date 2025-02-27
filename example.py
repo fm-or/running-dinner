@@ -3,7 +3,7 @@ from model.DinnerInstance import DinnerInstance
 
 print("Getting locations and distances...")
 instance = DinnerInstance(
-    ors_auth_key = "5b3ce3597851110001cf62484afafd161320478f803cc018ec70f210",
+    ors_auth_key = "your-ors-key",
     country_code = "DE",
     city_address= "33602 Bielefeld",
     events = ["zu Hause", "Vorspeise", "Hauptspeise", "Nachspeise", "After Party"],
