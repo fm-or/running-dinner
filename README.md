@@ -4,21 +4,21 @@ If a group does not host an event, it visits another group.
 The maximum travel time between consecutive events should be minimized.
 
 ## Problem Instance
-A problem instance consists of a set of groups $G$ and a set of places $V$, where these sets are usually identical since the groups themselves are hosts.
+A problem instance consists of a set of groups $G$ and a set of locations $V$, where these sets are usually identical since the groups themselves are hosts.
 There should be exactly $k$ groups at the same location for an event.
 In addition, there is a set of events $E$ consisting of a start event $0$, end event $n+1$ and usually three main events in between, namely appetizer, main course and dessert.
 To minimize the maximum travel time between the events, the travel time $d_{v, w}$ between each pair of locations $v$, $w$ is also required.
 <div align="center">
   
-Parameter | Description
+Notation | Description
 ---: | :---
-$g \in G$ | set of groups where subsets meet at locations for events
+$g \in G$ | group
 $k \in \mathbb{N}$ | number of groups at the same location for an event
-$v \in V$ | set of locations
+$v \in V$ | location
 $v_g \in V$ | home location of group $g$
-$e \in \lbrace 0, \ldots, n+1 \rbrace = E $ | set of events
+$e \in \lbrace 0, \ldots, n+1 \rbrace = E $ | event
 $e_g \in E$ | event where group $g$ is a host
-$h \in H_e$ | set of groups $h$ that host the event $e = e_h$
+$h \in H_e$ | one host of event $e$, i.e. $e = e_h$
 $d_{v, w} \in \mathbb{R}_{\ge 0}$ | distance between locations $v$ and $w$
 $P_1, P_2, P_3 \in \mathbb{R}_{\ge 0}$ | cost for different kind of penalties
   
